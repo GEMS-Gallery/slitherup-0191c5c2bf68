@@ -1,0 +1,19 @@
+type Player = 
+ record {
+   id: nat;
+   position: nat;
+ };
+type GameState = 
+ record {
+   currentPlayerIndex: nat;
+   players: vec Player;
+   winner: opt nat;
+ };
+service : {
+  checkWinCondition: () -> (opt nat) query;
+  getCurrentPlayer: () -> (nat) query;
+  getGameState: () -> (GameState) query;
+  initGame: (nat) -> (GameState);
+  movePlayer: (nat) -> (GameState);
+  rollDice: () -> (nat);
+}
